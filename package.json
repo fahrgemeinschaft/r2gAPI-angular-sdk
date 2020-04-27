@@ -1,6 +1,6 @@
 {
   "name": "r2g-ts-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./dist/index.js",
   "author": "ride2Go GmbH & Tristan Marsell",
   "license": "BSD-3-Clause",
