@@ -6,6 +6,7 @@
     "noImplicitAny": true,
     "outDir": "dist",
     "rootDir": ".",
+    "sourceMap": true,
     "lib": [
       "es6",
       "dom"
