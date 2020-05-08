@@ -20,6 +20,97 @@ import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
+ *
+ * @export
+ * @interface ContactPoint
+ */
+export interface ContactPoint {
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    created?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    modified?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ContactPoint
+     */
+    deleted?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    createdBy?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    modifiedBy?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    id?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    url?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    additionalType?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    name?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    image?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    description?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    email?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    faxnumber?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    telephone?: string;
+}
+/**
  * represents a contact of a persona
  * @export
  * @interface ContactPointDto
@@ -621,6 +712,120 @@ export enum ParticipationDtoStatusEnum {
 }
 
 /**
+ *
+ * @export
+ * @interface Persona
+ */
+export interface Persona {
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    created?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    modified?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof Persona
+     */
+    deleted?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    createdBy?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    modifiedBy?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    id?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    url?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    additionalType?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    name?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    image?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    description?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    additionalName?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    familyName?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    givenName?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Persona
+     */
+    gender?: PersonaGenderEnum;
+    /**
+     *
+     * @type {Array<ContactPoint>}
+     * @memberof Persona
+     */
+    contactPoints?: Array<ContactPoint>;
+}
+
+/**
+ * @export
+ * @enum {string}
+ */
+export enum PersonaGenderEnum {
+    MAN,
+    WOMAN,
+    G
+}
+
+/**
  * Represents a persona. A Persona is a Character or Profile a User chooses to adapt. In most cases this will be a Profile of a Human, however it can also be used as Profile for technical users/machines or Organisations.
  * @export
  * @interface PersonaDto
@@ -735,116 +940,66 @@ export enum PersonaDtoGenderEnum {
 }
 
 /**
- * searching criteria, including pagination options
+ * A schedule defines a repeating time period used to describe a regularly occurring Event.
  * @export
- * @interface Search
+ * @interface ScheduleDto
  */
-export interface Search {
+export interface ScheduleDto {
     /**
-     *
-     * @type {PageRequest}
-     * @memberof Search
+     * Day of Week this Event is scheduled
+     * @type {string}
+     * @memberof ScheduleDto
      */
-    page?: PageRequest;
+    byDay?: ScheduleDtoByDayEnum;
     /**
-     * what kind of trips to look for
+     * Month of year this Event is scheduled
+     * @type {string}
+     * @memberof ScheduleDto
+     */
+    byMonth?: ScheduleDtoByMonthEnum;
+    /**
+     * Day of Month. Must be between 1 -31
+     * @type {number}
+     * @memberof ScheduleDto
+     */
+    byDayOfMonth?: number;
+    /**
+     * earliest Start Date of Interval
+     * @type {string}
+     * @memberof ScheduleDto
+     */
+    startDate?: string;
+    /**
+     * End Date of Interval
+     * @type {string}
+     * @memberof ScheduleDto
+     */
+    endDate?: string;
+    /**
+     * earliest Start Date of Interval
      * @type {Array<string>}
-     * @memberof Search
+     * @memberof ScheduleDto
      */
-    tripTypes?: Array<SearchTripTypesEnum>;
+    exceptDates?: Array<string>;
+    /**
+     * number of repetitions, 0 for neverending
+     * @type {number}
+     * @memberof ScheduleDto
+     */
+    repeatCount?: number;
     /**
      *
-     * @type {SearchRadius}
-     * @memberof Search
+     * @type {ScheduleDtoScheduleTimezone}
+     * @memberof ScheduleDto
      */
-    startPoint?: SearchRadius;
-    /**
-     *
-     * @type {SearchRadius}
-     * @memberof Search
-     */
-    endPoint?: SearchRadius;
-    /**
-     *
-     * @type {TimeRange}
-     * @memberof Search
-     */
-    departure?: TimeRange;
-    /**
-     *
-     * @type {TimeRange}
-     * @memberof Search
-     */
-    arrival?: TimeRange;
-    /**
-     * on which days should the trip reoccur
-     * @type {Array<string>}
-     * @memberof Search
-     */
-    reoccurDays?: Array<SearchReoccurDaysEnum>;
-    /**
-     * is smoking allowed (irrelevant by default)
-     * @type {string}
-     * @memberof Search
-     */
-    smoking?: SearchSmokingEnum;
-    /**
-     * are animals allowed (irrelevant by default)
-     * @type {string}
-     * @memberof Search
-     */
-    animals?: SearchAnimalsEnum;
-    /**
-     * types of transport
-     * @type {Array<string>}
-     * @memberof Search
-     */
-    transportTypes?: Array<SearchTransportTypesEnum>;
-    /**
-     * size of allowed baggage
-     * @type {string}
-     * @memberof Search
-     */
-    baggage?: SearchBaggageEnum;
-    /**
-     * desired gender of the driver (irrelevant by default)
-     * @type {string}
-     * @memberof Search
-     */
-    gender?: SearchGenderEnum;
-    /**
-     * organization associatons
-     * @type {Array<string>}
-     * @memberof Search
-     */
-    organizations?: Array<SearchOrganizationsEnum>;
-    /**
-     * start of the availability of the trip
-     * @type {string}
-     * @memberof Search
-     */
-    availabilityStarts?: string;
-    /**
-     * end of the availability of the trip
-     * @type {string}
-     * @memberof Search
-     */
-    availabilityEnds?: string;
+    scheduleTimezone?: ScheduleDtoScheduleTimezone;
 }
 
 /**
  * @export
  * @enum {string}
  */
-export enum SearchTripTypesEnum {
-    OFFER,
-    SEARCH
-}
-/**
- * @export
- * @enum {string}
- */
-export enum SearchReoccurDaysEnum {
+export enum ScheduleDtoByDayEnum {
     MONDAY,
     TUESDAY,
     WEDNESDAY,
@@ -857,63 +1012,52 @@ export enum SearchReoccurDaysEnum {
  * @export
  * @enum {string}
  */
-export enum SearchSmokingEnum {
-    YES,
-    NO,
-    ASK,
-    IRRELEVANT
-}
-/**
- * @export
- * @enum {string}
- */
-export enum SearchAnimalsEnum {
-    YES,
-    NO,
-    ASK,
-    IRRELEVANT
-}
-/**
- * @export
- * @enum {string}
- */
-export enum SearchTransportTypesEnum {
-    CAR,
-    PLANE,
-    BOAT,
-    TRAIN
-}
-/**
- * @export
- * @enum {string}
- */
-export enum SearchBaggageEnum {
-    SMALL,
-    MEDIUM,
-    LARGE,
-    HUGE
-}
-/**
- * @export
- * @enum {string}
- */
-export enum SearchGenderEnum {
-    MAN,
-    WOMAN,
-    IRRELEVANT
-}
-/**
- * @export
- * @enum {string}
- */
-export enum SearchOrganizationsEnum {
-    ADAC,
-    ACA,
-    ACL,
-    TCS,
-    TOURING
+export enum ScheduleDtoByMonthEnum {
+    JANUARY,
+    FEBRUARY,
+    MARCH,
+    APRIL,
+    MAY,
+    JUNE,
+    JULY,
+    AUGUST,
+    SEPTEMBER,
+    OCTOBER,
+    NOVEMBER,
+    DECEMBER
 }
 
+/**
+ * timezone of this schedule
+ * @export
+ * @interface ScheduleDtoScheduleTimezone
+ */
+export interface ScheduleDtoScheduleTimezone {
+    /**
+     *
+     * @type {string}
+     * @memberof ScheduleDtoScheduleTimezone
+     */
+    id?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleDtoScheduleTimezone
+     */
+    rawOffset?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleDtoScheduleTimezone
+     */
+    dstsavings?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof ScheduleDtoScheduleTimezone
+     */
+    displayName?: string;
+}
 /**
  * searching criteria, including pagination options
  * @export
@@ -1112,25 +1256,6 @@ export interface SearchRadius {
      * @memberof SearchRadius
      */
     radius?: number;
-}
-/**
- * represents a time range
- * @export
- * @interface TimeRange
- */
-export interface TimeRange {
-    /**
-     * mean of the time range
-     * @type {string}
-     * @memberof TimeRange
-     */
-    time?: string;
-    /**
-     * duration between the mean and the ends of the time range
-     * @type {number}
-     * @memberof TimeRange
-     */
-    toleranceInDays?: number;
 }
 /**
  * represents a time range
@@ -1432,6 +1557,12 @@ export interface TripDto {
      * @memberof TripDto
      */
     animals?: TripDtoAnimalsEnum;
+    /**
+     *
+     * @type {Array<ScheduleDto>}
+     * @memberof TripDto
+     */
+    schedules?: Array<ScheduleDto>;
 }
 
 /**
@@ -1548,53 +1679,15 @@ export enum UserSearchIsOnlineEnum {
 export const DemandsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Delete an Offer
-         * @param {DemandDto} demandDto Offer Data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        _delete(demandDto: DemandDto, options: any = {}): RequestArgs {
-            // verify required parameter 'demandDto' is not null or undefined
-            if (demandDto === null || demandDto === undefined) {
-                throw new RequiredError('demandDto','Required parameter demandDto was null or undefined when calling _delete.');
-            }
-            const localVarPath = `/demand/`;
-            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof demandDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(demandDto !== undefined ? demandDto : {}) : (demandDto || "");
-
-            return {
-                url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Create an Deman
          * @param {DemandDto} demandDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create(demandDto: DemandDto, options: any = {}): RequestArgs {
+        create2(demandDto: DemandDto, options: any = {}): RequestArgs {
             // verify required parameter 'demandDto' is not null or undefined
             if (demandDto === null || demandDto === undefined) {
-                throw new RequiredError('demandDto','Required parameter demandDto was null or undefined when calling create.');
+                throw new RequiredError('demandDto','Required parameter demandDto was null or undefined when calling create2.');
             }
             const localVarPath = `/demand/`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -1624,15 +1717,53 @@ export const DemandsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Delete an Offer
+         * @param {DemandDto} demandDto Offer Data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        delete2(demandDto: DemandDto, options: any = {}): RequestArgs {
+            // verify required parameter 'demandDto' is not null or undefined
+            if (demandDto === null || demandDto === undefined) {
+                throw new RequiredError('demandDto','Required parameter demandDto was null or undefined when calling delete2.');
+            }
+            const localVarPath = `/demand/`;
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof demandDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(demandDto !== undefined ? demandDto : {}) : (demandDto || "");
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Returns the demand with the given ID
          * @param {string} id ID of the demand to find
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteById(id: string, options: any = {}): RequestArgs {
+        deleteById2(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling deleteById.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling deleteById2.');
             }
             const localVarPath = `/demand/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -1664,10 +1795,10 @@ export const DemandsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById(id: string, options: any = {}): RequestArgs {
+        getById4(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling getById.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling getById4.');
             }
             const localVarPath = `/demand/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -1699,10 +1830,10 @@ export const DemandsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(searchDto: SearchDto, options: any = {}): RequestArgs {
+        search4(searchDto: SearchDto, options: any = {}): RequestArgs {
             // verify required parameter 'searchDto' is not null or undefined
             if (searchDto === null || searchDto === undefined) {
-                throw new RequiredError('searchDto','Required parameter searchDto was null or undefined when calling search.');
+                throw new RequiredError('searchDto','Required parameter searchDto was null or undefined when calling search4.');
             }
             const localVarPath = `/demand/search`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -1737,10 +1868,10 @@ export const DemandsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update(demandDto: DemandDto, options: any = {}): RequestArgs {
+        update2(demandDto: DemandDto, options: any = {}): RequestArgs {
             // verify required parameter 'demandDto' is not null or undefined
             if (demandDto === null || demandDto === undefined) {
-                throw new RequiredError('demandDto','Required parameter demandDto was null or undefined when calling update.');
+                throw new RequiredError('demandDto','Required parameter demandDto was null or undefined when calling update2.');
             }
             const localVarPath = `/demand/`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -1779,26 +1910,26 @@ export const DemandsApiAxiosParamCreator = function (configuration?: Configurati
 export const DemandsApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * Delete an Offer
-         * @param {DemandDto} demandDto Offer Data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        _delete(demandDto: DemandDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
-            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration)._delete(demandDto, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
          * Create an Deman
          * @param {DemandDto} demandDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create(demandDto: DemandDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
-            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).create(demandDto, options);
+        create2(demandDto: DemandDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
+            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).create2(demandDto, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * Delete an Offer
+         * @param {DemandDto} demandDto Offer Data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        delete2(demandDto: DemandDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
+            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).delete2(demandDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1810,8 +1941,8 @@ export const DemandsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteById(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
-            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).deleteById(id, options);
+        deleteById2(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
+            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).deleteById2(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1823,8 +1954,8 @@ export const DemandsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
-            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).getById(id, options);
+        getById4(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
+            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).getById4(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1836,8 +1967,8 @@ export const DemandsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(searchDto: SearchDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageDemandDto> {
-            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).search(searchDto, options);
+        search4(searchDto: SearchDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageDemandDto> {
+            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).search4(searchDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1849,8 +1980,8 @@ export const DemandsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update(demandDto: DemandDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
-            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).update(demandDto, options);
+        update2(demandDto: DemandDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DemandDto> {
+            const localVarAxiosArgs = DemandsApiAxiosParamCreator(configuration).update2(demandDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1866,22 +1997,22 @@ export const DemandsApiFp = function(configuration?: Configuration) {
 export const DemandsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
-         * Delete an Offer
-         * @param {DemandDto} demandDto Offer Data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        _delete(demandDto: DemandDto, options?: any): AxiosPromise<DemandDto> {
-            return DemandsApiFp(configuration)._delete(demandDto, options)(axios, basePath);
-        },
-        /**
          * Create an Deman
          * @param {DemandDto} demandDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create(demandDto: DemandDto, options?: any): AxiosPromise<DemandDto> {
-            return DemandsApiFp(configuration).create(demandDto, options)(axios, basePath);
+        create2(demandDto: DemandDto, options?: any): AxiosPromise<DemandDto> {
+            return DemandsApiFp(configuration).create2(demandDto, options)(axios, basePath);
+        },
+        /**
+         * Delete an Offer
+         * @param {DemandDto} demandDto Offer Data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        delete2(demandDto: DemandDto, options?: any): AxiosPromise<DemandDto> {
+            return DemandsApiFp(configuration).delete2(demandDto, options)(axios, basePath);
         },
         /**
          * Returns the demand with the given ID
@@ -1889,8 +2020,8 @@ export const DemandsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteById(id: string, options?: any): AxiosPromise<DemandDto> {
-            return DemandsApiFp(configuration).deleteById(id, options)(axios, basePath);
+        deleteById2(id: string, options?: any): AxiosPromise<DemandDto> {
+            return DemandsApiFp(configuration).deleteById2(id, options)(axios, basePath);
         },
         /**
          * Returns the demand with the given ID
@@ -1898,8 +2029,8 @@ export const DemandsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById(id: string, options?: any): AxiosPromise<DemandDto> {
-            return DemandsApiFp(configuration).getById(id, options)(axios, basePath);
+        getById4(id: string, options?: any): AxiosPromise<DemandDto> {
+            return DemandsApiFp(configuration).getById4(id, options)(axios, basePath);
         },
         /**
          * Demand searching
@@ -1907,8 +2038,8 @@ export const DemandsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(searchDto: SearchDto, options?: any): AxiosPromise<PageDemandDto> {
-            return DemandsApiFp(configuration).search(searchDto, options)(axios, basePath);
+        search4(searchDto: SearchDto, options?: any): AxiosPromise<PageDemandDto> {
+            return DemandsApiFp(configuration).search4(searchDto, options)(axios, basePath);
         },
         /**
          * Update an Offer
@@ -1916,8 +2047,8 @@ export const DemandsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update(demandDto: DemandDto, options?: any): AxiosPromise<DemandDto> {
-            return DemandsApiFp(configuration).update(demandDto, options)(axios, basePath);
+        update2(demandDto: DemandDto, options?: any): AxiosPromise<DemandDto> {
+            return DemandsApiFp(configuration).update2(demandDto, options)(axios, basePath);
         },
     };
 };
@@ -1930,25 +2061,25 @@ export const DemandsApiFactory = function (configuration?: Configuration, basePa
  */
 export class DemandsApi extends BaseAPI {
     /**
-     * Delete an Offer
-     * @param {DemandDto} demandDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DemandsApi
-     */
-    public _delete(demandDto: DemandDto, options?: any) {
-        return DemandsApiFp(this.configuration)._delete(demandDto, options)(this.axios, this.basePath);
-    }
-
-    /**
      * Create an Deman
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    public create(demandDto: DemandDto, options?: any) {
-        return DemandsApiFp(this.configuration).create(demandDto, options)(this.axios, this.basePath);
+    public create2(demandDto: DemandDto, options?: any) {
+        return DemandsApiFp(this.configuration).create2(demandDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * Delete an Offer
+     * @param {DemandDto} demandDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DemandsApi
+     */
+    public delete2(demandDto: DemandDto, options?: any) {
+        return DemandsApiFp(this.configuration).delete2(demandDto, options)(this.axios, this.basePath);
     }
 
     /**
@@ -1958,8 +2089,8 @@ export class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    public deleteById(id: string, options?: any) {
-        return DemandsApiFp(this.configuration).deleteById(id, options)(this.axios, this.basePath);
+    public deleteById2(id: string, options?: any) {
+        return DemandsApiFp(this.configuration).deleteById2(id, options)(this.axios, this.basePath);
     }
 
     /**
@@ -1969,8 +2100,8 @@ export class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    public getById(id: string, options?: any) {
-        return DemandsApiFp(this.configuration).getById(id, options)(this.axios, this.basePath);
+    public getById4(id: string, options?: any) {
+        return DemandsApiFp(this.configuration).getById4(id, options)(this.axios, this.basePath);
     }
 
     /**
@@ -1980,8 +2111,8 @@ export class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    public search(searchDto: SearchDto, options?: any) {
-        return DemandsApiFp(this.configuration).search(searchDto, options)(this.axios, this.basePath);
+    public search4(searchDto: SearchDto, options?: any) {
+        return DemandsApiFp(this.configuration).search4(searchDto, options)(this.axios, this.basePath);
     }
 
     /**
@@ -1991,8 +2122,8 @@ export class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    public update(demandDto: DemandDto, options?: any) {
-        return DemandsApiFp(this.configuration).update(demandDto, options)(this.axios, this.basePath);
+    public update2(demandDto: DemandDto, options?: any) {
+        return DemandsApiFp(this.configuration).update2(demandDto, options)(this.axios, this.basePath);
     }
 
 }
@@ -2005,53 +2136,15 @@ export class DemandsApi extends BaseAPI {
 export const OffersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create an Offer
-         * @param {OfferDto} offerDto Offer Data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        create1(offerDto: OfferDto, options: any = {}): RequestArgs {
-            // verify required parameter 'offerDto' is not null or undefined
-            if (offerDto === null || offerDto === undefined) {
-                throw new RequiredError('offerDto','Required parameter offerDto was null or undefined when calling create1.');
-            }
-            const localVarPath = `/offer/`;
-            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof offerDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(offerDto !== undefined ? offerDto : {}) : (offerDto || "");
-
-            return {
-                url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Delete an Offer
          * @param {OfferDto} offerDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1(offerDto: OfferDto, options: any = {}): RequestArgs {
+        _delete(offerDto: OfferDto, options: any = {}): RequestArgs {
             // verify required parameter 'offerDto' is not null or undefined
             if (offerDto === null || offerDto === undefined) {
-                throw new RequiredError('offerDto','Required parameter offerDto was null or undefined when calling delete1.');
+                throw new RequiredError('offerDto','Required parameter offerDto was null or undefined when calling _delete.');
             }
             const localVarPath = `/offer/`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -2081,15 +2174,53 @@ export const OffersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
+         * Create an Offer
+         * @param {OfferDto} offerDto Offer Data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        create(offerDto: OfferDto, options: any = {}): RequestArgs {
+            // verify required parameter 'offerDto' is not null or undefined
+            if (offerDto === null || offerDto === undefined) {
+                throw new RequiredError('offerDto','Required parameter offerDto was null or undefined when calling create.');
+            }
+            const localVarPath = `/offer/`;
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof offerDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(offerDto !== undefined ? offerDto : {}) : (offerDto || "");
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Returns the demand with the given ID
          * @param {string} id ID of the demand to find
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteById1(id: string, options: any = {}): RequestArgs {
+        deleteById(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling deleteById1.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling deleteById.');
             }
             const localVarPath = `/offer/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -2121,10 +2252,10 @@ export const OffersApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById1(id: string, options: any = {}): RequestArgs {
+        getById(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling getById1.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling getById.');
             }
             const localVarPath = `/offer/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -2156,10 +2287,10 @@ export const OffersApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1(searchDto: SearchDto, options: any = {}): RequestArgs {
+        search(searchDto: SearchDto, options: any = {}): RequestArgs {
             // verify required parameter 'searchDto' is not null or undefined
             if (searchDto === null || searchDto === undefined) {
-                throw new RequiredError('searchDto','Required parameter searchDto was null or undefined when calling search1.');
+                throw new RequiredError('searchDto','Required parameter searchDto was null or undefined when calling search.');
             }
             const localVarPath = `/offer/search`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -2194,10 +2325,10 @@ export const OffersApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1(offerDto: OfferDto, options: any = {}): RequestArgs {
+        update(offerDto: OfferDto, options: any = {}): RequestArgs {
             // verify required parameter 'offerDto' is not null or undefined
             if (offerDto === null || offerDto === undefined) {
-                throw new RequiredError('offerDto','Required parameter offerDto was null or undefined when calling update1.');
+                throw new RequiredError('offerDto','Required parameter offerDto was null or undefined when calling update.');
             }
             const localVarPath = `/offer/`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -2236,26 +2367,26 @@ export const OffersApiAxiosParamCreator = function (configuration?: Configuratio
 export const OffersApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * Create an Offer
+         * Delete an Offer
          * @param {OfferDto} offerDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1(offerDto: OfferDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
-            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).create1(offerDto, options);
+        _delete(offerDto: OfferDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
+            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration)._delete(offerDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
             };
         },
         /**
-         * Delete an Offer
+         * Create an Offer
          * @param {OfferDto} offerDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1(offerDto: OfferDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
-            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).delete1(offerDto, options);
+        create(offerDto: OfferDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
+            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).create(offerDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2267,8 +2398,8 @@ export const OffersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteById1(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
-            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).deleteById1(id, options);
+        deleteById(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
+            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).deleteById(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2280,8 +2411,8 @@ export const OffersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById1(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
-            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).getById1(id, options);
+        getById(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
+            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).getById(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2293,8 +2424,8 @@ export const OffersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1(searchDto: SearchDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageOfferDto> {
-            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).search1(searchDto, options);
+        search(searchDto: SearchDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageOfferDto> {
+            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).search(searchDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2306,8 +2437,8 @@ export const OffersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1(offerDto: OfferDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
-            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).update1(offerDto, options);
+        update(offerDto: OfferDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfferDto> {
+            const localVarAxiosArgs = OffersApiAxiosParamCreator(configuration).update(offerDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2323,22 +2454,22 @@ export const OffersApiFp = function(configuration?: Configuration) {
 export const OffersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
-         * Create an Offer
-         * @param {OfferDto} offerDto Offer Data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        create1(offerDto: OfferDto, options?: any): AxiosPromise<OfferDto> {
-            return OffersApiFp(configuration).create1(offerDto, options)(axios, basePath);
-        },
-        /**
          * Delete an Offer
          * @param {OfferDto} offerDto Offer Data
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1(offerDto: OfferDto, options?: any): AxiosPromise<OfferDto> {
-            return OffersApiFp(configuration).delete1(offerDto, options)(axios, basePath);
+        _delete(offerDto: OfferDto, options?: any): AxiosPromise<OfferDto> {
+            return OffersApiFp(configuration)._delete(offerDto, options)(axios, basePath);
+        },
+        /**
+         * Create an Offer
+         * @param {OfferDto} offerDto Offer Data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        create(offerDto: OfferDto, options?: any): AxiosPromise<OfferDto> {
+            return OffersApiFp(configuration).create(offerDto, options)(axios, basePath);
         },
         /**
          * Returns the demand with the given ID
@@ -2346,8 +2477,8 @@ export const OffersApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteById1(id: string, options?: any): AxiosPromise<OfferDto> {
-            return OffersApiFp(configuration).deleteById1(id, options)(axios, basePath);
+        deleteById(id: string, options?: any): AxiosPromise<OfferDto> {
+            return OffersApiFp(configuration).deleteById(id, options)(axios, basePath);
         },
         /**
          * Returns the offer with the given ID
@@ -2355,8 +2486,8 @@ export const OffersApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById1(id: string, options?: any): AxiosPromise<OfferDto> {
-            return OffersApiFp(configuration).getById1(id, options)(axios, basePath);
+        getById(id: string, options?: any): AxiosPromise<OfferDto> {
+            return OffersApiFp(configuration).getById(id, options)(axios, basePath);
         },
         /**
          * Offer searching
@@ -2364,8 +2495,8 @@ export const OffersApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1(searchDto: SearchDto, options?: any): AxiosPromise<PageOfferDto> {
-            return OffersApiFp(configuration).search1(searchDto, options)(axios, basePath);
+        search(searchDto: SearchDto, options?: any): AxiosPromise<PageOfferDto> {
+            return OffersApiFp(configuration).search(searchDto, options)(axios, basePath);
         },
         /**
          * Update an Offer
@@ -2373,8 +2504,8 @@ export const OffersApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1(offerDto: OfferDto, options?: any): AxiosPromise<OfferDto> {
-            return OffersApiFp(configuration).update1(offerDto, options)(axios, basePath);
+        update(offerDto: OfferDto, options?: any): AxiosPromise<OfferDto> {
+            return OffersApiFp(configuration).update(offerDto, options)(axios, basePath);
         },
     };
 };
@@ -2387,25 +2518,25 @@ export const OffersApiFactory = function (configuration?: Configuration, basePat
  */
 export class OffersApi extends BaseAPI {
     /**
-     * Create an Offer
-     * @param {OfferDto} offerDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OffersApi
-     */
-    public create1(offerDto: OfferDto, options?: any) {
-        return OffersApiFp(this.configuration).create1(offerDto, options)(this.axios, this.basePath);
-    }
-
-    /**
      * Delete an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    public delete1(offerDto: OfferDto, options?: any) {
-        return OffersApiFp(this.configuration).delete1(offerDto, options)(this.axios, this.basePath);
+    public _delete(offerDto: OfferDto, options?: any) {
+        return OffersApiFp(this.configuration)._delete(offerDto, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * Create an Offer
+     * @param {OfferDto} offerDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OffersApi
+     */
+    public create(offerDto: OfferDto, options?: any) {
+        return OffersApiFp(this.configuration).create(offerDto, options)(this.axios, this.basePath);
     }
 
     /**
@@ -2415,8 +2546,8 @@ export class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    public deleteById1(id: string, options?: any) {
-        return OffersApiFp(this.configuration).deleteById1(id, options)(this.axios, this.basePath);
+    public deleteById(id: string, options?: any) {
+        return OffersApiFp(this.configuration).deleteById(id, options)(this.axios, this.basePath);
     }
 
     /**
@@ -2426,8 +2557,8 @@ export class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    public getById1(id: string, options?: any) {
-        return OffersApiFp(this.configuration).getById1(id, options)(this.axios, this.basePath);
+    public getById(id: string, options?: any) {
+        return OffersApiFp(this.configuration).getById(id, options)(this.axios, this.basePath);
     }
 
     /**
@@ -2437,8 +2568,8 @@ export class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    public search1(searchDto: SearchDto, options?: any) {
-        return OffersApiFp(this.configuration).search1(searchDto, options)(this.axios, this.basePath);
+    public search(searchDto: SearchDto, options?: any) {
+        return OffersApiFp(this.configuration).search(searchDto, options)(this.axios, this.basePath);
     }
 
     /**
@@ -2448,8 +2579,8 @@ export class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    public update1(offerDto: OfferDto, options?: any) {
-        return OffersApiFp(this.configuration).update1(offerDto, options)(this.axios, this.basePath);
+    public update(offerDto: OfferDto, options?: any) {
+        return OffersApiFp(this.configuration).update(offerDto, options)(this.axios, this.basePath);
     }
 
 }
@@ -2467,10 +2598,10 @@ export const PersonasApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById2(id: string, options: any = {}): RequestArgs {
+        getById1(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling getById2.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling getById1.');
             }
             const localVarPath = `/persona/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -2502,10 +2633,10 @@ export const PersonasApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContactPoints(id: string, options: any = {}): RequestArgs {
+        getContactPoints1(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling getContactPoints.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling getContactPoints1.');
             }
             const localVarPath = `/persona/{id}/contact`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -2537,10 +2668,10 @@ export const PersonasApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2(userSearch: UserSearch, options: any = {}): RequestArgs {
+        search1(userSearch: UserSearch, options: any = {}): RequestArgs {
             // verify required parameter 'userSearch' is not null or undefined
             if (userSearch === null || userSearch === undefined) {
-                throw new RequiredError('userSearch','Required parameter userSearch was null or undefined when calling search2.');
+                throw new RequiredError('userSearch','Required parameter userSearch was null or undefined when calling search1.');
             }
             const localVarPath = `/persona/search`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -2584,8 +2715,8 @@ export const PersonasApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById2(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
-            const localVarAxiosArgs = PersonasApiAxiosParamCreator(configuration).getById2(id, options);
+        getById1(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+            const localVarAxiosArgs = PersonasApiAxiosParamCreator(configuration).getById1(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2597,8 +2728,8 @@ export const PersonasApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContactPoints(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
-            const localVarAxiosArgs = PersonasApiAxiosParamCreator(configuration).getContactPoints(id, options);
+        getContactPoints1(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+            const localVarAxiosArgs = PersonasApiAxiosParamCreator(configuration).getContactPoints1(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2610,8 +2741,8 @@ export const PersonasApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2(userSearch: UserSearch, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
-            const localVarAxiosArgs = PersonasApiAxiosParamCreator(configuration).search2(userSearch, options);
+        search1(userSearch: UserSearch, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+            const localVarAxiosArgs = PersonasApiAxiosParamCreator(configuration).search1(userSearch, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2632,8 +2763,8 @@ export const PersonasApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById2(id: string, options?: any): AxiosPromise<void> {
-            return PersonasApiFp(configuration).getById2(id, options)(axios, basePath);
+        getById1(id: string, options?: any): AxiosPromise<void> {
+            return PersonasApiFp(configuration).getById1(id, options)(axios, basePath);
         },
         /**
          * Returns the contact infos of the persona with the given ID
@@ -2641,8 +2772,8 @@ export const PersonasApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContactPoints(id: string, options?: any): AxiosPromise<void> {
-            return PersonasApiFp(configuration).getContactPoints(id, options)(axios, basePath);
+        getContactPoints1(id: string, options?: any): AxiosPromise<void> {
+            return PersonasApiFp(configuration).getContactPoints1(id, options)(axios, basePath);
         },
         /**
          * Persona searching
@@ -2650,8 +2781,8 @@ export const PersonasApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2(userSearch: UserSearch, options?: any): AxiosPromise<void> {
-            return PersonasApiFp(configuration).search2(userSearch, options)(axios, basePath);
+        search1(userSearch: UserSearch, options?: any): AxiosPromise<void> {
+            return PersonasApiFp(configuration).search1(userSearch, options)(axios, basePath);
         },
     };
 };
@@ -2670,8 +2801,8 @@ export class PersonasApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    public getById2(id: string, options?: any) {
-        return PersonasApiFp(this.configuration).getById2(id, options)(this.axios, this.basePath);
+    public getById1(id: string, options?: any) {
+        return PersonasApiFp(this.configuration).getById1(id, options)(this.axios, this.basePath);
     }
 
     /**
@@ -2681,8 +2812,8 @@ export class PersonasApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    public getContactPoints(id: string, options?: any) {
-        return PersonasApiFp(this.configuration).getContactPoints(id, options)(this.axios, this.basePath);
+    public getContactPoints1(id: string, options?: any) {
+        return PersonasApiFp(this.configuration).getContactPoints1(id, options)(this.axios, this.basePath);
     }
 
     /**
@@ -2692,8 +2823,8 @@ export class PersonasApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    public search2(userSearch: UserSearch, options?: any) {
-        return PersonasApiFp(this.configuration).search2(userSearch, options)(this.axios, this.basePath);
+    public search1(userSearch: UserSearch, options?: any) {
+        return PersonasApiFp(this.configuration).search1(userSearch, options)(this.axios, this.basePath);
     }
 
 }
@@ -2711,10 +2842,10 @@ export const TripsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById3(id: string, options: any = {}): RequestArgs {
+        getById2(id: string, options: any = {}): RequestArgs {
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling getById3.');
+                throw new RequiredError('id','Required parameter id was null or undefined when calling getById2.');
             }
             const localVarPath = `/trip/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -2742,14 +2873,14 @@ export const TripsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * Trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3(search: Search, options: any = {}): RequestArgs {
-            // verify required parameter 'search' is not null or undefined
-            if (search === null || search === undefined) {
-                throw new RequiredError('search','Required parameter search was null or undefined when calling search3.');
+        search2(searchDto: SearchDto, options: any = {}): RequestArgs {
+            // verify required parameter 'searchDto' is not null or undefined
+            if (searchDto === null || searchDto === undefined) {
+                throw new RequiredError('searchDto','Required parameter searchDto was null or undefined when calling search2.');
             }
             const localVarPath = `/trip/search`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -2770,8 +2901,8 @@ export const TripsApiAxiosParamCreator = function (configuration?: Configuration
             delete localVarUrlObj.search;
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof search !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(search !== undefined ? search : {}) : (search || "");
+            const needsSerialization = (typeof searchDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(searchDto !== undefined ? searchDto : {}) : (searchDto || "");
 
             return {
                 url: globalImportUrl.format(localVarUrlObj),
@@ -2780,14 +2911,14 @@ export const TripsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * Minimal trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchMinimal(search: Search, options: any = {}): RequestArgs {
-            // verify required parameter 'search' is not null or undefined
-            if (search === null || search === undefined) {
-                throw new RequiredError('search','Required parameter search was null or undefined when calling searchMinimal.');
+        searchMinimal1(searchDto: SearchDto, options: any = {}): RequestArgs {
+            // verify required parameter 'searchDto' is not null or undefined
+            if (searchDto === null || searchDto === undefined) {
+                throw new RequiredError('searchDto','Required parameter searchDto was null or undefined when calling searchMinimal1.');
             }
             const localVarPath = `/trip/search/minimal`;
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -2808,8 +2939,8 @@ export const TripsApiAxiosParamCreator = function (configuration?: Configuration
             delete localVarUrlObj.search;
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof search !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(search !== undefined ? search : {}) : (search || "");
+            const needsSerialization = (typeof searchDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(searchDto !== undefined ? searchDto : {}) : (searchDto || "");
 
             return {
                 url: globalImportUrl.format(localVarUrlObj),
@@ -2831,8 +2962,8 @@ export const TripsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById3(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TripDto> {
-            const localVarAxiosArgs = TripsApiAxiosParamCreator(configuration).getById3(id, options);
+        getById2(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TripDto> {
+            const localVarAxiosArgs = TripsApiAxiosParamCreator(configuration).getById2(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2840,12 +2971,12 @@ export const TripsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3(search: Search, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageTripDto> {
-            const localVarAxiosArgs = TripsApiAxiosParamCreator(configuration).search3(search, options);
+        search2(searchDto: SearchDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PageTripDto> {
+            const localVarAxiosArgs = TripsApiAxiosParamCreator(configuration).search2(searchDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2853,12 +2984,12 @@ export const TripsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Minimal trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchMinimal(search: Search, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
-            const localVarAxiosArgs = TripsApiAxiosParamCreator(configuration).searchMinimal(search, options);
+        searchMinimal1(searchDto: SearchDto, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+            const localVarAxiosArgs = TripsApiAxiosParamCreator(configuration).searchMinimal1(searchDto, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2879,26 +3010,26 @@ export const TripsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById3(id: string, options?: any): AxiosPromise<TripDto> {
-            return TripsApiFp(configuration).getById3(id, options)(axios, basePath);
+        getById2(id: string, options?: any): AxiosPromise<TripDto> {
+            return TripsApiFp(configuration).getById2(id, options)(axios, basePath);
         },
         /**
          * Trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3(search: Search, options?: any): AxiosPromise<PageTripDto> {
-            return TripsApiFp(configuration).search3(search, options)(axios, basePath);
+        search2(searchDto: SearchDto, options?: any): AxiosPromise<PageTripDto> {
+            return TripsApiFp(configuration).search2(searchDto, options)(axios, basePath);
         },
         /**
          * Minimal trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchMinimal(search: Search, options?: any): AxiosPromise<void> {
-            return TripsApiFp(configuration).searchMinimal(search, options)(axios, basePath);
+        searchMinimal1(searchDto: SearchDto, options?: any): AxiosPromise<void> {
+            return TripsApiFp(configuration).searchMinimal1(searchDto, options)(axios, basePath);
         },
     };
 };
@@ -2917,30 +3048,30 @@ export class TripsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    public getById3(id: string, options?: any) {
-        return TripsApiFp(this.configuration).getById3(id, options)(this.axios, this.basePath);
+    public getById2(id: string, options?: any) {
+        return TripsApiFp(this.configuration).getById2(id, options)(this.axios, this.basePath);
     }
 
     /**
      * Trip searching
-     * @param {Search} search Search criteria
+     * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    public search3(search: Search, options?: any) {
-        return TripsApiFp(this.configuration).search3(search, options)(this.axios, this.basePath);
+    public search2(searchDto: SearchDto, options?: any) {
+        return TripsApiFp(this.configuration).search2(searchDto, options)(this.axios, this.basePath);
     }
 
     /**
      * Minimal trip searching
-     * @param {Search} search Search criteria
+     * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    public searchMinimal(search: Search, options?: any) {
-        return TripsApiFp(this.configuration).searchMinimal(search, options)(this.axios, this.basePath);
+    public searchMinimal1(searchDto: SearchDto, options?: any) {
+        return TripsApiFp(this.configuration).searchMinimal1(searchDto, options)(this.axios, this.basePath);
     }
 
 }
