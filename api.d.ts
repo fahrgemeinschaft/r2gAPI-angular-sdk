@@ -101,6 +101,12 @@ export interface ContactPoint {
      * @memberof ContactPoint
      */
     telephone?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ContactPoint
+     */
+    mobile?: string;
 }
 /**
  * represents a contact of a persona
@@ -192,6 +198,12 @@ export interface ContactPointDto {
      * @memberof ContactPointDto
      */
     telephone?: string;
+    /**
+     * mobile
+     * @type {string}
+     * @memberof ContactPointDto
+     */
+    mobile?: string;
 }
 /**
  * represents a trip demand
@@ -307,6 +319,103 @@ export interface DemandDto {
      * @memberof DemandDto
      */
     marketActor?: PersonaDto;
+    /**
+     * this Market is exclusive to this List of organisations or persons
+     * @type {Array<PersonaDto>}
+     * @memberof DemandDto
+     */
+    exclusiveTo?: Array<PersonaDto>;
+}
+/**
+ * Coordinates of this Place, elevation is normalized to 100mNN if unknown
+ * @export
+ * @interface GeoCoordinatesDto
+ */
+export interface GeoCoordinatesDto {
+    /**
+     * creation time of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    created?: string;
+    /**
+     * last modification time of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    modified?: string;
+    /**
+     * a flag, whether this object is deleted
+     * @type {boolean}
+     * @memberof GeoCoordinatesDto
+     */
+    deleted?: boolean;
+    /**
+     * id of creator
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    createdBy?: string;
+    /**
+     * id of modifier
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    modifiedBy?: string;
+    /**
+     * ID of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    id?: string;
+    /**
+     * URL of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    url?: string;
+    /**
+     * additional type information
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    additionalType?: string;
+    /**
+     * name of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    name?: string;
+    /**
+     * an image of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    image?: string;
+    /**
+     * description of this object
+     * @type {string}
+     * @memberof GeoCoordinatesDto
+     */
+    description?: string;
+    /**
+     * The latitude of a location. For example 37.42242 (WGS 84).
+     * @type {number}
+     * @memberof GeoCoordinatesDto
+     */
+    latitude?: number;
+    /**
+     * The longitude of a location. For example -122.08585 (WGS 84).
+     * @type {number}
+     * @memberof GeoCoordinatesDto
+     */
+    longitude?: number;
+    /**
+     * The elevation of a location (WGS 84).
+     * @type {number}
+     * @memberof GeoCoordinatesDto
+     */
+    elevation?: number;
 }
 /**
  * represents a location with its coordinates
@@ -460,6 +569,12 @@ export interface OfferDto {
      * @memberof OfferDto
      */
     marketActor?: PersonaDto;
+    /**
+     * this Market is exclusive to this List of organisations or persons
+     * @type {Array<PersonaDto>}
+     * @memberof OfferDto
+     */
+    exclusiveTo?: Array<PersonaDto>;
 }
 /**
  * holds a page
@@ -684,22 +799,22 @@ export interface ParticipationDto {
     participant?: PersonaDto;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum ParticipationDtoRoleEnum {
-    DRIVER,
-    OPERATOR,
-    PASSENGER
+    DRIVER = 0,
+    OPERATOR = 1,
+    PASSENGER = 2
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum ParticipationDtoStatusEnum {
-    ACCEPTED,
-    REQUESTED,
-    REJECTED
+    ACCEPTED = 0,
+    REQUESTED = 1,
+    REJECTED = 2
 }
 /**
  *
@@ -805,13 +920,13 @@ export interface Persona {
     contactPoints?: Array<ContactPoint>;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum PersonaGenderEnum {
-    MAN,
-    WOMAN,
-    G
+    MAN = 0,
+    WOMAN = 1,
+    G = 2
 }
 /**
  * Represents a persona. A Persona is a Character or Profile a User chooses to adapt. In most cases this will be a Profile of a Human, however it can also be used as Profile for technical users/machines or Organisations.
@@ -917,13 +1032,201 @@ export interface PersonaDto {
     contactPoints?: Array<ContactPointDto>;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum PersonaDtoGenderEnum {
-    MAN,
-    WOMAN,
-    G
+    MAN = 0,
+    WOMAN = 1,
+    G = 2
+}
+/**
+ * Arrival Stop of Trip
+ * @export
+ * @interface PlaceDto
+ */
+export interface PlaceDto {
+    /**
+     * creation time of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    created?: string;
+    /**
+     * last modification time of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    modified?: string;
+    /**
+     * a flag, whether this object is deleted
+     * @type {boolean}
+     * @memberof PlaceDto
+     */
+    deleted?: boolean;
+    /**
+     * id of creator
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    createdBy?: string;
+    /**
+     * id of modifier
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    modifiedBy?: string;
+    /**
+     * ID of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    id?: string;
+    /**
+     * URL of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    url?: string;
+    /**
+     * additional type information
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    additionalType?: string;
+    /**
+     * name of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    name?: string;
+    /**
+     * an image of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    image?: string;
+    /**
+     * description of this object
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    description?: string;
+    /**
+     * A single-line Address
+     * @type {string}
+     * @memberof PlaceDto
+     */
+    simpleAddress?: string;
+    /**
+     *
+     * @type {PostalAddressDto}
+     * @memberof PlaceDto
+     */
+    address?: PostalAddressDto;
+    /**
+     *
+     * @type {GeoCoordinatesDto}
+     * @memberof PlaceDto
+     */
+    geo?: GeoCoordinatesDto;
+}
+/**
+ * An Postal Address of this Place
+ * @export
+ * @interface PostalAddressDto
+ */
+export interface PostalAddressDto {
+    /**
+     * creation time of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    created?: string;
+    /**
+     * last modification time of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    modified?: string;
+    /**
+     * a flag, whether this object is deleted
+     * @type {boolean}
+     * @memberof PostalAddressDto
+     */
+    deleted?: boolean;
+    /**
+     * id of creator
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    createdBy?: string;
+    /**
+     * id of modifier
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    modifiedBy?: string;
+    /**
+     * ID of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    id?: string;
+    /**
+     * URL of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    url?: string;
+    /**
+     * additional type information
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    additionalType?: string;
+    /**
+     * name of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    name?: string;
+    /**
+     * an image of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    image?: string;
+    /**
+     * description of this object
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    description?: string;
+    /**
+     * Street and House Number or Flat
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    streetAddress?: string;
+    /**
+     * ZIP Code
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    postalCode?: string;
+    /**
+     * Name of Country
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    country?: string;
+    /**
+     * ISO three-letter Language Code
+     * @type {string}
+     * @memberof PostalAddressDto
+     */
+    countryCode?: string;
 }
 /**
  * A schedule defines a repeating time period used to describe a regularly occurring Event.
@@ -981,35 +1284,35 @@ export interface ScheduleDto {
     scheduleTimezone?: ScheduleDtoScheduleTimezone;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum ScheduleDtoByDayEnum {
-    MONDAY,
-    TUESDAY,
-    WEDNESDAY,
-    THURSDAY,
-    FRIDAY,
-    SATURDAY,
-    SUNDAY
+    MONDAY = 0,
+    TUESDAY = 1,
+    WEDNESDAY = 2,
+    THURSDAY = 3,
+    FRIDAY = 4,
+    SATURDAY = 5,
+    SUNDAY = 6
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum ScheduleDtoByMonthEnum {
-    JANUARY,
-    FEBRUARY,
-    MARCH,
-    APRIL,
-    MAY,
-    JUNE,
-    JULY,
-    AUGUST,
-    SEPTEMBER,
-    OCTOBER,
-    NOVEMBER,
-    DECEMBER
+    JANUARY = 0,
+    FEBRUARY = 1,
+    MARCH = 2,
+    APRIL = 3,
+    MAY = 4,
+    JUNE = 5,
+    JULY = 6,
+    AUGUST = 7,
+    SEPTEMBER = 8,
+    OCTOBER = 9,
+    NOVEMBER = 10,
+    DECEMBER = 11
 }
 /**
  * timezone of this schedule
@@ -1025,6 +1328,12 @@ export interface ScheduleDtoScheduleTimezone {
     id?: string;
     /**
      *
+     * @type {string}
+     * @memberof ScheduleDtoScheduleTimezone
+     */
+    displayName?: string;
+    /**
+     *
      * @type {number}
      * @memberof ScheduleDtoScheduleTimezone
      */
@@ -1035,12 +1344,6 @@ export interface ScheduleDtoScheduleTimezone {
      * @memberof ScheduleDtoScheduleTimezone
      */
     dstsavings?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ScheduleDtoScheduleTimezone
-     */
-    displayName?: string;
 }
 /**
  * searching criteria, including pagination options
@@ -1138,87 +1441,93 @@ export interface SearchDto {
      * @memberof SearchDto
      */
     availabilityEnds?: string;
+    /**
+     * User associations
+     * @type {Array<string>}
+     * @memberof SearchDto
+     */
+    associations?: Array<string>;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoTripTypesEnum {
-    OFFER,
-    SEARCH
+    OFFER = 0,
+    SEARCH = 1
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoReoccurDaysEnum {
-    MONDAY,
-    TUESDAY,
-    WEDNESDAY,
-    THURSDAY,
-    FRIDAY,
-    SATURDAY,
-    SUNDAY
+    MONDAY = 0,
+    TUESDAY = 1,
+    WEDNESDAY = 2,
+    THURSDAY = 3,
+    FRIDAY = 4,
+    SATURDAY = 5,
+    SUNDAY = 6
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoSmokingEnum {
-    YES,
-    NO,
-    ASK,
-    IRRELEVANT
+    YES = 0,
+    NO = 1,
+    ASK = 2,
+    IRRELEVANT = 3
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoAnimalsEnum {
-    YES,
-    NO,
-    ASK,
-    IRRELEVANT
+    YES = 0,
+    NO = 1,
+    ASK = 2,
+    IRRELEVANT = 3
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoTransportTypesEnum {
-    CAR,
-    PLANE,
-    BOAT,
-    TRAIN
+    CAR = 0,
+    PLANE = 1,
+    BOAT = 2,
+    TRAIN = 3
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoBaggageEnum {
-    SMALL,
-    MEDIUM,
-    LARGE,
-    HUGE
+    SMALL = 0,
+    MEDIUM = 1,
+    LARGE = 2,
+    HUGE = 3
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoGenderEnum {
-    MAN,
-    WOMAN,
-    IRRELEVANT
+    MAN = 0,
+    WOMAN = 1,
+    IRRELEVANT = 2
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum SearchDtoOrganizationsEnum {
-    ADAC,
-    ACA,
-    ACL,
-    TCS,
-    TOURING
+    ADAC = 0,
+    ACA = 1,
+    ACL = 2,
+    TCS = 3,
+    TOURING = 4
 }
 /**
  * represents a circular area
@@ -1392,24 +1701,24 @@ export interface TransportDto {
     registrationId?: string;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum TransportDtoTransportTypeEnum {
-    CAR,
-    PLANE,
-    BOAT,
-    TRAIN
+    CAR = 0,
+    PLANE = 1,
+    BOAT = 2,
+    TRAIN = 3
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum TransportDtoCargoVolumeEnum {
-    SMALL,
-    MEDIUM,
-    LARGE,
-    HUGE
+    SMALL = 0,
+    MEDIUM = 1,
+    LARGE = 2,
+    HUGE = 3
 }
 /**
  * represents a trip
@@ -1543,24 +1852,48 @@ export interface TripDto {
      * @memberof TripDto
      */
     schedules?: Array<ScheduleDto>;
+    /**
+     * itinerary of departure Stops of Trip
+     * @type {Array<WeightedPlaceItemDto>}
+     * @memberof TripDto
+     */
+    itinerary?: Array<WeightedPlaceItemDto>;
+    /**
+     * Subtrips of the trip
+     * @type {Array<WeightedTripItemDto>}
+     * @memberof TripDto
+     */
+    subTrips?: Array<WeightedTripItemDto>;
+    /**
+     *
+     * @type {PlaceDto}
+     * @memberof TripDto
+     */
+    departureFrom?: PlaceDto;
+    /**
+     *
+     * @type {PlaceDto}
+     * @memberof TripDto
+     */
+    arrivalAt?: PlaceDto;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum TripDtoSmokingEnum {
-    YES,
-    NO,
-    FLEX
+    YES = 0,
+    NO = 1,
+    FLEX = 2
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum TripDtoAnimalsEnum {
-    YES,
-    NO,
-    ASK
+    YES = 0,
+    NO = 1,
+    ASK = 2
 }
 /**
  * searching criteria, including pagination options
@@ -1612,40 +1945,138 @@ export interface UserSearch {
     isOnline?: UserSearchIsOnlineEnum;
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum UserSearchGenderEnum {
-    MAN,
-    WOMAN,
-    IRRELEVANT
+    MAN = 0,
+    WOMAN = 1,
+    IRRELEVANT = 2
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum UserSearchIsSingleEnum {
-    YES,
-    NO,
-    IRRELEVANT
+    YES = 0,
+    NO = 1,
+    IRRELEVANT = 2
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum UserSearchHasAvatarEnum {
-    YES,
-    NO,
-    IRRELEVANT
+    YES = 0,
+    NO = 1,
+    IRRELEVANT = 2
 }
 /**
- * @export
- * @enum {string}
- */
+    * @export
+    * @enum {string}
+    */
 export declare enum UserSearchIsOnlineEnum {
-    YES,
-    NO,
-    IRRELEVANT
+    YES = 0,
+    NO = 1,
+    IRRELEVANT = 2
+}
+/**
+ * itinerary of departure Stops of Trip
+ * @export
+ * @interface WeightedPlaceItemDto
+ */
+export interface WeightedPlaceItemDto {
+    /**
+     * creation time of this object
+     * @type {string}
+     * @memberof WeightedPlaceItemDto
+     */
+    created?: string;
+    /**
+     * last modification time of this object
+     * @type {string}
+     * @memberof WeightedPlaceItemDto
+     */
+    modified?: string;
+    /**
+     * a flag, whether this object is deleted
+     * @type {boolean}
+     * @memberof WeightedPlaceItemDto
+     */
+    deleted?: boolean;
+    /**
+     * id of creator
+     * @type {string}
+     * @memberof WeightedPlaceItemDto
+     */
+    createdBy?: string;
+    /**
+     * id of modifier
+     * @type {string}
+     * @memberof WeightedPlaceItemDto
+     */
+    modifiedBy?: string;
+    /**
+     *
+     * @type {PlaceDto}
+     * @memberof WeightedPlaceItemDto
+     */
+    item?: PlaceDto;
+    /**
+     * the weight or order of this Place
+     * @type {number}
+     * @memberof WeightedPlaceItemDto
+     */
+    weight?: number;
+}
+/**
+ * Subtrips of the trip
+ * @export
+ * @interface WeightedTripItemDto
+ */
+export interface WeightedTripItemDto {
+    /**
+     * creation time of this object
+     * @type {string}
+     * @memberof WeightedTripItemDto
+     */
+    created?: string;
+    /**
+     * last modification time of this object
+     * @type {string}
+     * @memberof WeightedTripItemDto
+     */
+    modified?: string;
+    /**
+     * a flag, whether this object is deleted
+     * @type {boolean}
+     * @memberof WeightedTripItemDto
+     */
+    deleted?: boolean;
+    /**
+     * id of creator
+     * @type {string}
+     * @memberof WeightedTripItemDto
+     */
+    createdBy?: string;
+    /**
+     * id of modifier
+     * @type {string}
+     * @memberof WeightedTripItemDto
+     */
+    modifiedBy?: string;
+    /**
+     *
+     * @type {TripDto}
+     * @memberof WeightedTripItemDto
+     */
+    item?: TripDto;
+    /**
+     * the weight or order of this Trip
+     * @type {number}
+     * @memberof WeightedTripItemDto
+     */
+    weight?: number;
 }
 /**
  * DemandsApi - axios parameter creator
@@ -1653,47 +2084,47 @@ export declare enum UserSearchIsOnlineEnum {
  */
 export declare const DemandsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Create an Deman
-     * @param {DemandDto} demandDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    create2(demandDto: DemandDto, options?: any): RequestArgs;
-    /**
      * Delete an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delete2(demandDto: DemandDto, options?: any): RequestArgs;
+    _delete(demandDto: DemandDto, options?: any): RequestArgs;
+    /**
+     * Create an Deman
+     * @param {DemandDto} demandDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    create(demandDto: DemandDto, options?: any): RequestArgs;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteById2(id: string, options?: any): RequestArgs;
+    deleteById(id: string, options?: any): RequestArgs;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById4(id: string, options?: any): RequestArgs;
+    getById2(id: string, options?: any): RequestArgs;
     /**
      * Demand searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search4(searchDto: SearchDto, options?: any): RequestArgs;
+    search2(searchDto: SearchDto, options?: any): RequestArgs;
     /**
      * Update an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update2(demandDto: DemandDto, options?: any): RequestArgs;
+    update(demandDto: DemandDto, options?: any): RequestArgs;
 };
 /**
  * DemandsApi - functional programming interface
@@ -1701,47 +2132,47 @@ export declare const DemandsApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const DemandsApiFp: (configuration?: Configuration) => {
     /**
-     * Create an Deman
-     * @param {DemandDto} demandDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    create2(demandDto: DemandDto, options?: any): (axios?: any, basePath?: string) => any;
-    /**
      * Delete an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delete2(demandDto: DemandDto, options?: any): (axios?: any, basePath?: string) => any;
+    _delete(demandDto: DemandDto, options?: any): (axios?: any, basePath?: string) => any;
+    /**
+     * Create an Deman
+     * @param {DemandDto} demandDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    create(demandDto: DemandDto, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteById2(id: string, options?: any): (axios?: any, basePath?: string) => any;
+    deleteById(id: string, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById4(id: string, options?: any): (axios?: any, basePath?: string) => any;
+    getById2(id: string, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Demand searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search4(searchDto: SearchDto, options?: any): (axios?: any, basePath?: string) => any;
+    search2(searchDto: SearchDto, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Update an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update2(demandDto: DemandDto, options?: any): (axios?: any, basePath?: string) => any;
+    update(demandDto: DemandDto, options?: any): (axios?: any, basePath?: string) => any;
 };
 /**
  * DemandsApi - factory interface
@@ -1749,47 +2180,47 @@ export declare const DemandsApiFp: (configuration?: Configuration) => {
  */
 export declare const DemandsApiFactory: (configuration?: Configuration, basePath?: string, axios?: any) => {
     /**
-     * Create an Deman
-     * @param {DemandDto} demandDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    create2(demandDto: DemandDto, options?: any): any;
-    /**
      * Delete an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    delete2(demandDto: DemandDto, options?: any): any;
+    _delete(demandDto: DemandDto, options?: any): any;
+    /**
+     * Create an Deman
+     * @param {DemandDto} demandDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    create(demandDto: DemandDto, options?: any): any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteById2(id: string, options?: any): any;
+    deleteById(id: string, options?: any): any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById4(id: string, options?: any): any;
+    getById2(id: string, options?: any): any;
     /**
      * Demand searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search4(searchDto: SearchDto, options?: any): any;
+    search2(searchDto: SearchDto, options?: any): any;
     /**
      * Update an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update2(demandDto: DemandDto, options?: any): any;
+    update(demandDto: DemandDto, options?: any): any;
 };
 /**
  * DemandsApi - object-oriented interface
@@ -1799,21 +2230,21 @@ export declare const DemandsApiFactory: (configuration?: Configuration, basePath
  */
 export declare class DemandsApi extends BaseAPI {
     /**
-     * Create an Deman
-     * @param {DemandDto} demandDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DemandsApi
-     */
-    create2(demandDto: DemandDto, options?: any): any;
-    /**
      * Delete an Offer
      * @param {DemandDto} demandDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    delete2(demandDto: DemandDto, options?: any): any;
+    _delete(demandDto: DemandDto, options?: any): any;
+    /**
+     * Create an Deman
+     * @param {DemandDto} demandDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DemandsApi
+     */
+    create(demandDto: DemandDto, options?: any): any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
@@ -1821,7 +2252,7 @@ export declare class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    deleteById2(id: string, options?: any): any;
+    deleteById(id: string, options?: any): any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
@@ -1829,7 +2260,7 @@ export declare class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    getById4(id: string, options?: any): any;
+    getById2(id: string, options?: any): any;
     /**
      * Demand searching
      * @param {SearchDto} searchDto Search criteria
@@ -1837,7 +2268,7 @@ export declare class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    search4(searchDto: SearchDto, options?: any): any;
+    search2(searchDto: SearchDto, options?: any): any;
     /**
      * Update an Offer
      * @param {DemandDto} demandDto Offer Data
@@ -1845,7 +2276,7 @@ export declare class DemandsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    update2(demandDto: DemandDto, options?: any): any;
+    update(demandDto: DemandDto, options?: any): any;
 }
 /**
  * OffersApi - axios parameter creator
@@ -1853,47 +2284,47 @@ export declare class DemandsApi extends BaseAPI {
  */
 export declare const OffersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Delete an Offer
-     * @param {OfferDto} offerDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    _delete(offerDto: OfferDto, options?: any): RequestArgs;
-    /**
      * Create an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create(offerDto: OfferDto, options?: any): RequestArgs;
+    create2(offerDto: OfferDto, options?: any): RequestArgs;
+    /**
+     * Delete an Offer
+     * @param {OfferDto} offerDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    delete2(offerDto: OfferDto, options?: any): RequestArgs;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteById(id: string, options?: any): RequestArgs;
+    deleteById1(id: string, options?: any): RequestArgs;
     /**
      * Returns the offer with the given ID
      * @param {string} id ID of the offer to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById(id: string, options?: any): RequestArgs;
+    getById4(id: string, options?: any): RequestArgs;
     /**
      * Offer searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search(searchDto: SearchDto, options?: any): RequestArgs;
+    search4(searchDto: SearchDto, options?: any): RequestArgs;
     /**
      * Update an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update(offerDto: OfferDto, options?: any): RequestArgs;
+    update2(offerDto: OfferDto, options?: any): RequestArgs;
 };
 /**
  * OffersApi - functional programming interface
@@ -1901,47 +2332,47 @@ export declare const OffersApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const OffersApiFp: (configuration?: Configuration) => {
     /**
-     * Delete an Offer
-     * @param {OfferDto} offerDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    _delete(offerDto: OfferDto, options?: any): (axios?: any, basePath?: string) => any;
-    /**
      * Create an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create(offerDto: OfferDto, options?: any): (axios?: any, basePath?: string) => any;
+    create2(offerDto: OfferDto, options?: any): (axios?: any, basePath?: string) => any;
+    /**
+     * Delete an Offer
+     * @param {OfferDto} offerDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    delete2(offerDto: OfferDto, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteById(id: string, options?: any): (axios?: any, basePath?: string) => any;
+    deleteById1(id: string, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Returns the offer with the given ID
      * @param {string} id ID of the offer to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById(id: string, options?: any): (axios?: any, basePath?: string) => any;
+    getById4(id: string, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Offer searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search(searchDto: SearchDto, options?: any): (axios?: any, basePath?: string) => any;
+    search4(searchDto: SearchDto, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Update an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update(offerDto: OfferDto, options?: any): (axios?: any, basePath?: string) => any;
+    update2(offerDto: OfferDto, options?: any): (axios?: any, basePath?: string) => any;
 };
 /**
  * OffersApi - factory interface
@@ -1949,47 +2380,47 @@ export declare const OffersApiFp: (configuration?: Configuration) => {
  */
 export declare const OffersApiFactory: (configuration?: Configuration, basePath?: string, axios?: any) => {
     /**
-     * Delete an Offer
-     * @param {OfferDto} offerDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    _delete(offerDto: OfferDto, options?: any): any;
-    /**
      * Create an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create(offerDto: OfferDto, options?: any): any;
+    create2(offerDto: OfferDto, options?: any): any;
+    /**
+     * Delete an Offer
+     * @param {OfferDto} offerDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    delete2(offerDto: OfferDto, options?: any): any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteById(id: string, options?: any): any;
+    deleteById1(id: string, options?: any): any;
     /**
      * Returns the offer with the given ID
      * @param {string} id ID of the offer to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById(id: string, options?: any): any;
+    getById4(id: string, options?: any): any;
     /**
      * Offer searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search(searchDto: SearchDto, options?: any): any;
+    search4(searchDto: SearchDto, options?: any): any;
     /**
      * Update an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update(offerDto: OfferDto, options?: any): any;
+    update2(offerDto: OfferDto, options?: any): any;
 };
 /**
  * OffersApi - object-oriented interface
@@ -1999,21 +2430,21 @@ export declare const OffersApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class OffersApi extends BaseAPI {
     /**
-     * Delete an Offer
-     * @param {OfferDto} offerDto Offer Data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OffersApi
-     */
-    _delete(offerDto: OfferDto, options?: any): any;
-    /**
      * Create an Offer
      * @param {OfferDto} offerDto Offer Data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    create(offerDto: OfferDto, options?: any): any;
+    create2(offerDto: OfferDto, options?: any): any;
+    /**
+     * Delete an Offer
+     * @param {OfferDto} offerDto Offer Data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OffersApi
+     */
+    delete2(offerDto: OfferDto, options?: any): any;
     /**
      * Returns the demand with the given ID
      * @param {string} id ID of the demand to find
@@ -2021,7 +2452,7 @@ export declare class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    deleteById(id: string, options?: any): any;
+    deleteById1(id: string, options?: any): any;
     /**
      * Returns the offer with the given ID
      * @param {string} id ID of the offer to find
@@ -2029,7 +2460,7 @@ export declare class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    getById(id: string, options?: any): any;
+    getById4(id: string, options?: any): any;
     /**
      * Offer searching
      * @param {SearchDto} searchDto Search criteria
@@ -2037,7 +2468,7 @@ export declare class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    search(searchDto: SearchDto, options?: any): any;
+    search4(searchDto: SearchDto, options?: any): any;
     /**
      * Update an Offer
      * @param {OfferDto} offerDto Offer Data
@@ -2045,7 +2476,7 @@ export declare class OffersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    update(offerDto: OfferDto, options?: any): any;
+    update2(offerDto: OfferDto, options?: any): any;
 }
 /**
  * PersonasApi - axios parameter creator
@@ -2058,7 +2489,7 @@ export declare const PersonasApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById1(id: string, options?: any): RequestArgs;
+    getById3(id: string, options?: any): RequestArgs;
     /**
      * Returns the contact infos of the persona with the given ID
      * @param {string} id ID of the persona to find
@@ -2072,7 +2503,7 @@ export declare const PersonasApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search1(userSearch: UserSearch, options?: any): RequestArgs;
+    search3(userSearch: UserSearch, options?: any): RequestArgs;
 };
 /**
  * PersonasApi - functional programming interface
@@ -2085,7 +2516,7 @@ export declare const PersonasApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById1(id: string, options?: any): (axios?: any, basePath?: string) => any;
+    getById3(id: string, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Returns the contact infos of the persona with the given ID
      * @param {string} id ID of the persona to find
@@ -2099,7 +2530,7 @@ export declare const PersonasApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search1(userSearch: UserSearch, options?: any): (axios?: any, basePath?: string) => any;
+    search3(userSearch: UserSearch, options?: any): (axios?: any, basePath?: string) => any;
 };
 /**
  * PersonasApi - factory interface
@@ -2112,7 +2543,7 @@ export declare const PersonasApiFactory: (configuration?: Configuration, basePat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById1(id: string, options?: any): any;
+    getById3(id: string, options?: any): any;
     /**
      * Returns the contact infos of the persona with the given ID
      * @param {string} id ID of the persona to find
@@ -2126,7 +2557,7 @@ export declare const PersonasApiFactory: (configuration?: Configuration, basePat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search1(userSearch: UserSearch, options?: any): any;
+    search3(userSearch: UserSearch, options?: any): any;
 };
 /**
  * PersonasApi - object-oriented interface
@@ -2142,7 +2573,7 @@ export declare class PersonasApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    getById1(id: string, options?: any): any;
+    getById3(id: string, options?: any): any;
     /**
      * Returns the contact infos of the persona with the given ID
      * @param {string} id ID of the persona to find
@@ -2158,7 +2589,7 @@ export declare class PersonasApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    search1(userSearch: UserSearch, options?: any): any;
+    search3(userSearch: UserSearch, options?: any): any;
 }
 /**
  * TripsApi - axios parameter creator
@@ -2171,14 +2602,14 @@ export declare const TripsApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById2(id: string, options?: any): RequestArgs;
+    getById1(id: string, options?: any): RequestArgs;
     /**
      * Trip searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search2(searchDto: SearchDto, options?: any): RequestArgs;
+    search1(searchDto: SearchDto, options?: any): RequestArgs;
     /**
      * Minimal trip searching
      * @param {SearchDto} searchDto Search criteria
@@ -2198,14 +2629,14 @@ export declare const TripsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById2(id: string, options?: any): (axios?: any, basePath?: string) => any;
+    getById1(id: string, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Trip searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search2(searchDto: SearchDto, options?: any): (axios?: any, basePath?: string) => any;
+    search1(searchDto: SearchDto, options?: any): (axios?: any, basePath?: string) => any;
     /**
      * Minimal trip searching
      * @param {SearchDto} searchDto Search criteria
@@ -2225,14 +2656,14 @@ export declare const TripsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getById2(id: string, options?: any): any;
+    getById1(id: string, options?: any): any;
     /**
      * Trip searching
      * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    search2(searchDto: SearchDto, options?: any): any;
+    search1(searchDto: SearchDto, options?: any): any;
     /**
      * Minimal trip searching
      * @param {SearchDto} searchDto Search criteria
@@ -2255,7 +2686,7 @@ export declare class TripsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    getById2(id: string, options?: any): any;
+    getById1(id: string, options?: any): any;
     /**
      * Trip searching
      * @param {SearchDto} searchDto Search criteria
@@ -2263,7 +2694,7 @@ export declare class TripsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    search2(searchDto: SearchDto, options?: any): any;
+    search1(searchDto: SearchDto, options?: any): any;
     /**
      * Minimal trip searching
      * @param {SearchDto} searchDto Search criteria
