@@ -24,7 +24,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 // Some imports not used depending on template conditions
 // @ts-ignore
 var axios_1 = require("axios");
@@ -37,7 +37,7 @@ exports.COLLECTION_FORMATS = {
     csv: ",",
     ssv: " ",
     tsv: "\t",
-    pipes: "|",
+    pipes: "|"
 };
 /**
  *
@@ -47,7 +47,7 @@ exports.COLLECTION_FORMATS = {
 var BaseAPI = /** @class */ (function () {
     function BaseAPI(configuration, basePath, axios) {
         if (basePath === void 0) { basePath = exports.BASE_PATH; }
-        if (axios === void 0) { axios = axios_1.default; }
+        if (axios === void 0) { axios = axios_1["default"]; }
         this.basePath = basePath;
         this.axios = axios;
         if (configuration) {
@@ -76,3 +76,4 @@ var RequiredError = /** @class */ (function (_super) {
     return RequiredError;
 }(Error));
 exports.RequiredError = RequiredError;
+//# sourceMappingURL=base.js.map

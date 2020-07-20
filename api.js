@@ -35,7 +35,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var globalImportUrl = require("url");
 var axios_1 = require("axios");
 // Some imports not used depending on template conditions
@@ -65,6 +65,16 @@ var ParticipationDtoStatusEnum;
     * @export
     * @enum {string}
     */
+var PersonaGenderEnum;
+(function (PersonaGenderEnum) {
+    PersonaGenderEnum[PersonaGenderEnum["MAN"] = 0] = "MAN";
+    PersonaGenderEnum[PersonaGenderEnum["WOMAN"] = 1] = "WOMAN";
+    PersonaGenderEnum[PersonaGenderEnum["G"] = 2] = "G";
+})(PersonaGenderEnum = exports.PersonaGenderEnum || (exports.PersonaGenderEnum = {}));
+/**
+    * @export
+    * @enum {string}
+    */
 var PersonaDtoGenderEnum;
 (function (PersonaDtoGenderEnum) {
     PersonaDtoGenderEnum[PersonaDtoGenderEnum["MAN"] = 0] = "MAN";
@@ -75,91 +85,35 @@ var PersonaDtoGenderEnum;
     * @export
     * @enum {string}
     */
-var SearchTripTypesEnum;
-(function (SearchTripTypesEnum) {
-    SearchTripTypesEnum[SearchTripTypesEnum["OFFER"] = 0] = "OFFER";
-    SearchTripTypesEnum[SearchTripTypesEnum["SEARCH"] = 1] = "SEARCH";
-})(SearchTripTypesEnum = exports.SearchTripTypesEnum || (exports.SearchTripTypesEnum = {}));
+var ScheduleDtoByDayEnum;
+(function (ScheduleDtoByDayEnum) {
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["MONDAY"] = 0] = "MONDAY";
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["TUESDAY"] = 1] = "TUESDAY";
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["WEDNESDAY"] = 2] = "WEDNESDAY";
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["THURSDAY"] = 3] = "THURSDAY";
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["FRIDAY"] = 4] = "FRIDAY";
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["SATURDAY"] = 5] = "SATURDAY";
+    ScheduleDtoByDayEnum[ScheduleDtoByDayEnum["SUNDAY"] = 6] = "SUNDAY";
+})(ScheduleDtoByDayEnum = exports.ScheduleDtoByDayEnum || (exports.ScheduleDtoByDayEnum = {}));
 /**
     * @export
     * @enum {string}
     */
-var SearchReoccurDaysEnum;
-(function (SearchReoccurDaysEnum) {
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["MONDAY"] = 0] = "MONDAY";
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["TUESDAY"] = 1] = "TUESDAY";
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["WEDNESDAY"] = 2] = "WEDNESDAY";
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["THURSDAY"] = 3] = "THURSDAY";
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["FRIDAY"] = 4] = "FRIDAY";
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["SATURDAY"] = 5] = "SATURDAY";
-    SearchReoccurDaysEnum[SearchReoccurDaysEnum["SUNDAY"] = 6] = "SUNDAY";
-})(SearchReoccurDaysEnum = exports.SearchReoccurDaysEnum || (exports.SearchReoccurDaysEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var SearchSmokingEnum;
-(function (SearchSmokingEnum) {
-    SearchSmokingEnum[SearchSmokingEnum["YES"] = 0] = "YES";
-    SearchSmokingEnum[SearchSmokingEnum["NO"] = 1] = "NO";
-    SearchSmokingEnum[SearchSmokingEnum["ASK"] = 2] = "ASK";
-    SearchSmokingEnum[SearchSmokingEnum["IRRELEVANT"] = 3] = "IRRELEVANT";
-})(SearchSmokingEnum = exports.SearchSmokingEnum || (exports.SearchSmokingEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var SearchAnimalsEnum;
-(function (SearchAnimalsEnum) {
-    SearchAnimalsEnum[SearchAnimalsEnum["YES"] = 0] = "YES";
-    SearchAnimalsEnum[SearchAnimalsEnum["NO"] = 1] = "NO";
-    SearchAnimalsEnum[SearchAnimalsEnum["ASK"] = 2] = "ASK";
-    SearchAnimalsEnum[SearchAnimalsEnum["IRRELEVANT"] = 3] = "IRRELEVANT";
-})(SearchAnimalsEnum = exports.SearchAnimalsEnum || (exports.SearchAnimalsEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var SearchTransportTypesEnum;
-(function (SearchTransportTypesEnum) {
-    SearchTransportTypesEnum[SearchTransportTypesEnum["CAR"] = 0] = "CAR";
-    SearchTransportTypesEnum[SearchTransportTypesEnum["PLANE"] = 1] = "PLANE";
-    SearchTransportTypesEnum[SearchTransportTypesEnum["BOAT"] = 2] = "BOAT";
-    SearchTransportTypesEnum[SearchTransportTypesEnum["TRAIN"] = 3] = "TRAIN";
-})(SearchTransportTypesEnum = exports.SearchTransportTypesEnum || (exports.SearchTransportTypesEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var SearchBaggageEnum;
-(function (SearchBaggageEnum) {
-    SearchBaggageEnum[SearchBaggageEnum["SMALL"] = 0] = "SMALL";
-    SearchBaggageEnum[SearchBaggageEnum["MEDIUM"] = 1] = "MEDIUM";
-    SearchBaggageEnum[SearchBaggageEnum["LARGE"] = 2] = "LARGE";
-    SearchBaggageEnum[SearchBaggageEnum["HUGE"] = 3] = "HUGE";
-})(SearchBaggageEnum = exports.SearchBaggageEnum || (exports.SearchBaggageEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var SearchGenderEnum;
-(function (SearchGenderEnum) {
-    SearchGenderEnum[SearchGenderEnum["MAN"] = 0] = "MAN";
-    SearchGenderEnum[SearchGenderEnum["WOMAN"] = 1] = "WOMAN";
-    SearchGenderEnum[SearchGenderEnum["IRRELEVANT"] = 2] = "IRRELEVANT";
-})(SearchGenderEnum = exports.SearchGenderEnum || (exports.SearchGenderEnum = {}));
-/**
-    * @export
-    * @enum {string}
-    */
-var SearchOrganizationsEnum;
-(function (SearchOrganizationsEnum) {
-    SearchOrganizationsEnum[SearchOrganizationsEnum["ADAC"] = 0] = "ADAC";
-    SearchOrganizationsEnum[SearchOrganizationsEnum["ACA"] = 1] = "ACA";
-    SearchOrganizationsEnum[SearchOrganizationsEnum["ACL"] = 2] = "ACL";
-    SearchOrganizationsEnum[SearchOrganizationsEnum["TCS"] = 3] = "TCS";
-    SearchOrganizationsEnum[SearchOrganizationsEnum["TOURING"] = 4] = "TOURING";
-})(SearchOrganizationsEnum = exports.SearchOrganizationsEnum || (exports.SearchOrganizationsEnum = {}));
+var ScheduleDtoByMonthEnum;
+(function (ScheduleDtoByMonthEnum) {
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["JANUARY"] = 0] = "JANUARY";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["FEBRUARY"] = 1] = "FEBRUARY";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["MARCH"] = 2] = "MARCH";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["APRIL"] = 3] = "APRIL";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["MAY"] = 4] = "MAY";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["JUNE"] = 5] = "JUNE";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["JULY"] = 6] = "JULY";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["AUGUST"] = 7] = "AUGUST";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["SEPTEMBER"] = 8] = "SEPTEMBER";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["OCTOBER"] = 9] = "OCTOBER";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["NOVEMBER"] = 10] = "NOVEMBER";
+    ScheduleDtoByMonthEnum[ScheduleDtoByMonthEnum["DECEMBER"] = 11] = "DECEMBER";
+})(ScheduleDtoByMonthEnum = exports.ScheduleDtoByMonthEnum || (exports.ScheduleDtoByMonthEnum = {}));
 /**
     * @export
     * @enum {string}
@@ -368,7 +322,7 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(demandDto !== undefined ? demandDto : {}) : (demandDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -402,7 +356,7 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(demandDto !== undefined ? demandDto : {}) : (demandDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -434,7 +388,7 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -443,11 +397,11 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById: function (id, options) {
+        getById2: function (id, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById.');
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById2.');
             }
             var localVarPath = "/demand/{id}"
                 .replace("{" + "id" + "}", encodeURIComponent(String(id)));
@@ -466,7 +420,7 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -475,11 +429,11 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search: function (searchDto, options) {
+        search2: function (searchDto, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'searchDto' is not null or undefined
             if (searchDto === null || searchDto === undefined) {
-                throw new base_1.RequiredError('searchDto', 'Required parameter searchDto was null or undefined when calling search.');
+                throw new base_1.RequiredError('searchDto', 'Required parameter searchDto was null or undefined when calling search2.');
             }
             var localVarPath = "/demand/search";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -500,7 +454,7 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(searchDto !== undefined ? searchDto : {}) : (searchDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -534,9 +488,9 @@ exports.DemandsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(demandDto !== undefined ? demandDto : {}) : (demandDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
-        },
+        }
     };
 };
 /**
@@ -554,7 +508,7 @@ exports.DemandsApiFp = function (configuration) {
         _delete: function (demandDto, options) {
             var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration)._delete(demandDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -569,7 +523,7 @@ exports.DemandsApiFp = function (configuration) {
         create: function (demandDto, options) {
             var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).create(demandDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -584,7 +538,7 @@ exports.DemandsApiFp = function (configuration) {
         deleteById: function (id, options) {
             var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).deleteById(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -596,10 +550,10 @@ exports.DemandsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById: function (id, options) {
-            var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).getById(id, options);
+        getById2: function (id, options) {
+            var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).getById2(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -611,10 +565,10 @@ exports.DemandsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search: function (searchDto, options) {
-            var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).search(searchDto, options);
+        search2: function (searchDto, options) {
+            var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).search2(searchDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -629,12 +583,12 @@ exports.DemandsApiFp = function (configuration) {
         update: function (demandDto, options) {
             var localVarAxiosArgs = exports.DemandsApiAxiosParamCreator(configuration).update(demandDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
             };
-        },
+        }
     };
 };
 /**
@@ -676,8 +630,8 @@ exports.DemandsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById: function (id, options) {
-            return exports.DemandsApiFp(configuration).getById(id, options)(axios, basePath);
+        getById2: function (id, options) {
+            return exports.DemandsApiFp(configuration).getById2(id, options)(axios, basePath);
         },
         /**
          * Demand searching
@@ -685,8 +639,8 @@ exports.DemandsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search: function (searchDto, options) {
-            return exports.DemandsApiFp(configuration).search(searchDto, options)(axios, basePath);
+        search2: function (searchDto, options) {
+            return exports.DemandsApiFp(configuration).search2(searchDto, options)(axios, basePath);
         },
         /**
          * Update an Offer
@@ -696,7 +650,7 @@ exports.DemandsApiFactory = function (configuration, basePath, axios) {
          */
         update: function (demandDto, options) {
             return exports.DemandsApiFp(configuration).update(demandDto, options)(axios, basePath);
-        },
+        }
     };
 };
 /**
@@ -747,8 +701,8 @@ var DemandsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    DemandsApi.prototype.getById = function (id, options) {
-        return exports.DemandsApiFp(this.configuration).getById(id, options)(this.axios, this.basePath);
+    DemandsApi.prototype.getById2 = function (id, options) {
+        return exports.DemandsApiFp(this.configuration).getById2(id, options)(this.axios, this.basePath);
     };
     /**
      * Demand searching
@@ -757,8 +711,8 @@ var DemandsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof DemandsApi
      */
-    DemandsApi.prototype.search = function (searchDto, options) {
-        return exports.DemandsApiFp(this.configuration).search(searchDto, options)(this.axios, this.basePath);
+    DemandsApi.prototype.search2 = function (searchDto, options) {
+        return exports.DemandsApiFp(this.configuration).search2(searchDto, options)(this.axios, this.basePath);
     };
     /**
      * Update an Offer
@@ -785,11 +739,11 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1: function (offerDto, options) {
+        create2: function (offerDto, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'offerDto' is not null or undefined
             if (offerDto === null || offerDto === undefined) {
-                throw new base_1.RequiredError('offerDto', 'Required parameter offerDto was null or undefined when calling create1.');
+                throw new base_1.RequiredError('offerDto', 'Required parameter offerDto was null or undefined when calling create2.');
             }
             var localVarPath = "/offer/";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -810,7 +764,7 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(offerDto !== undefined ? offerDto : {}) : (offerDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -819,11 +773,11 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1: function (offerDto, options) {
+        delete2: function (offerDto, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'offerDto' is not null or undefined
             if (offerDto === null || offerDto === undefined) {
-                throw new base_1.RequiredError('offerDto', 'Required parameter offerDto was null or undefined when calling delete1.');
+                throw new base_1.RequiredError('offerDto', 'Required parameter offerDto was null or undefined when calling delete2.');
             }
             var localVarPath = "/offer/";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -844,7 +798,7 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(offerDto !== undefined ? offerDto : {}) : (offerDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -876,7 +830,7 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -885,11 +839,11 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById1: function (id, options) {
+        getById4: function (id, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById1.');
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById4.');
             }
             var localVarPath = "/offer/{id}"
                 .replace("{" + "id" + "}", encodeURIComponent(String(id)));
@@ -908,7 +862,7 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -917,11 +871,11 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1: function (searchDto, options) {
+        search4: function (searchDto, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'searchDto' is not null or undefined
             if (searchDto === null || searchDto === undefined) {
-                throw new base_1.RequiredError('searchDto', 'Required parameter searchDto was null or undefined when calling search1.');
+                throw new base_1.RequiredError('searchDto', 'Required parameter searchDto was null or undefined when calling search4.');
             }
             var localVarPath = "/offer/search";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -942,7 +896,7 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(searchDto !== undefined ? searchDto : {}) : (searchDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -951,11 +905,11 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1: function (offerDto, options) {
+        update2: function (offerDto, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'offerDto' is not null or undefined
             if (offerDto === null || offerDto === undefined) {
-                throw new base_1.RequiredError('offerDto', 'Required parameter offerDto was null or undefined when calling update1.');
+                throw new base_1.RequiredError('offerDto', 'Required parameter offerDto was null or undefined when calling update2.');
             }
             var localVarPath = "/offer/";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -976,9 +930,9 @@ exports.OffersApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(offerDto !== undefined ? offerDto : {}) : (offerDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
-        },
+        }
     };
 };
 /**
@@ -993,10 +947,10 @@ exports.OffersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1: function (offerDto, options) {
-            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).create1(offerDto, options);
+        create2: function (offerDto, options) {
+            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).create2(offerDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1008,10 +962,10 @@ exports.OffersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1: function (offerDto, options) {
-            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).delete1(offerDto, options);
+        delete2: function (offerDto, options) {
+            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).delete2(offerDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1026,7 +980,7 @@ exports.OffersApiFp = function (configuration) {
         deleteById1: function (id, options) {
             var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).deleteById1(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1038,10 +992,10 @@ exports.OffersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById1: function (id, options) {
-            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).getById1(id, options);
+        getById4: function (id, options) {
+            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).getById4(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1053,10 +1007,10 @@ exports.OffersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1: function (searchDto, options) {
-            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).search1(searchDto, options);
+        search4: function (searchDto, options) {
+            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).search4(searchDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1068,15 +1022,15 @@ exports.OffersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1: function (offerDto, options) {
-            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).update1(offerDto, options);
+        update2: function (offerDto, options) {
+            var localVarAxiosArgs = exports.OffersApiAxiosParamCreator(configuration).update2(offerDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
             };
-        },
+        }
     };
 };
 /**
@@ -1091,8 +1045,8 @@ exports.OffersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create1: function (offerDto, options) {
-            return exports.OffersApiFp(configuration).create1(offerDto, options)(axios, basePath);
+        create2: function (offerDto, options) {
+            return exports.OffersApiFp(configuration).create2(offerDto, options)(axios, basePath);
         },
         /**
          * Delete an Offer
@@ -1100,8 +1054,8 @@ exports.OffersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1: function (offerDto, options) {
-            return exports.OffersApiFp(configuration).delete1(offerDto, options)(axios, basePath);
+        delete2: function (offerDto, options) {
+            return exports.OffersApiFp(configuration).delete2(offerDto, options)(axios, basePath);
         },
         /**
          * Returns the demand with the given ID
@@ -1118,8 +1072,8 @@ exports.OffersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById1: function (id, options) {
-            return exports.OffersApiFp(configuration).getById1(id, options)(axios, basePath);
+        getById4: function (id, options) {
+            return exports.OffersApiFp(configuration).getById4(id, options)(axios, basePath);
         },
         /**
          * Offer searching
@@ -1127,8 +1081,8 @@ exports.OffersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1: function (searchDto, options) {
-            return exports.OffersApiFp(configuration).search1(searchDto, options)(axios, basePath);
+        search4: function (searchDto, options) {
+            return exports.OffersApiFp(configuration).search4(searchDto, options)(axios, basePath);
         },
         /**
          * Update an Offer
@@ -1136,9 +1090,9 @@ exports.OffersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update1: function (offerDto, options) {
-            return exports.OffersApiFp(configuration).update1(offerDto, options)(axios, basePath);
-        },
+        update2: function (offerDto, options) {
+            return exports.OffersApiFp(configuration).update2(offerDto, options)(axios, basePath);
+        }
     };
 };
 /**
@@ -1159,8 +1113,8 @@ var OffersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    OffersApi.prototype.create1 = function (offerDto, options) {
-        return exports.OffersApiFp(this.configuration).create1(offerDto, options)(this.axios, this.basePath);
+    OffersApi.prototype.create2 = function (offerDto, options) {
+        return exports.OffersApiFp(this.configuration).create2(offerDto, options)(this.axios, this.basePath);
     };
     /**
      * Delete an Offer
@@ -1169,8 +1123,8 @@ var OffersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    OffersApi.prototype.delete1 = function (offerDto, options) {
-        return exports.OffersApiFp(this.configuration).delete1(offerDto, options)(this.axios, this.basePath);
+    OffersApi.prototype.delete2 = function (offerDto, options) {
+        return exports.OffersApiFp(this.configuration).delete2(offerDto, options)(this.axios, this.basePath);
     };
     /**
      * Returns the demand with the given ID
@@ -1189,8 +1143,8 @@ var OffersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    OffersApi.prototype.getById1 = function (id, options) {
-        return exports.OffersApiFp(this.configuration).getById1(id, options)(this.axios, this.basePath);
+    OffersApi.prototype.getById4 = function (id, options) {
+        return exports.OffersApiFp(this.configuration).getById4(id, options)(this.axios, this.basePath);
     };
     /**
      * Offer searching
@@ -1199,8 +1153,8 @@ var OffersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    OffersApi.prototype.search1 = function (searchDto, options) {
-        return exports.OffersApiFp(this.configuration).search1(searchDto, options)(this.axios, this.basePath);
+    OffersApi.prototype.search4 = function (searchDto, options) {
+        return exports.OffersApiFp(this.configuration).search4(searchDto, options)(this.axios, this.basePath);
     };
     /**
      * Update an Offer
@@ -1209,8 +1163,8 @@ var OffersApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof OffersApi
      */
-    OffersApi.prototype.update1 = function (offerDto, options) {
-        return exports.OffersApiFp(this.configuration).update1(offerDto, options)(this.axios, this.basePath);
+    OffersApi.prototype.update2 = function (offerDto, options) {
+        return exports.OffersApiFp(this.configuration).update2(offerDto, options)(this.axios, this.basePath);
     };
     return OffersApi;
 }(base_1.BaseAPI));
@@ -1227,11 +1181,11 @@ exports.PersonasApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById2: function (id, options) {
+        getById3: function (id, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById2.');
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById3.');
             }
             var localVarPath = "/persona/{id}"
                 .replace("{" + "id" + "}", encodeURIComponent(String(id)));
@@ -1250,7 +1204,7 @@ exports.PersonasApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -1259,11 +1213,11 @@ exports.PersonasApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContactPoints: function (id, options) {
+        getContactPoints1: function (id, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getContactPoints.');
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getContactPoints1.');
             }
             var localVarPath = "/persona/{id}/contact"
                 .replace("{" + "id" + "}", encodeURIComponent(String(id)));
@@ -1282,7 +1236,7 @@ exports.PersonasApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
@@ -1291,11 +1245,11 @@ exports.PersonasApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2: function (userSearch, options) {
+        search3: function (userSearch, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'userSearch' is not null or undefined
             if (userSearch === null || userSearch === undefined) {
-                throw new base_1.RequiredError('userSearch', 'Required parameter userSearch was null or undefined when calling search2.');
+                throw new base_1.RequiredError('userSearch', 'Required parameter userSearch was null or undefined when calling search3.');
             }
             var localVarPath = "/persona/search";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -1316,9 +1270,9 @@ exports.PersonasApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(userSearch !== undefined ? userSearch : {}) : (userSearch || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
-        },
+        }
     };
 };
 /**
@@ -1333,10 +1287,10 @@ exports.PersonasApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById2: function (id, options) {
-            var localVarAxiosArgs = exports.PersonasApiAxiosParamCreator(configuration).getById2(id, options);
+        getById3: function (id, options) {
+            var localVarAxiosArgs = exports.PersonasApiAxiosParamCreator(configuration).getById3(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1348,10 +1302,10 @@ exports.PersonasApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContactPoints: function (id, options) {
-            var localVarAxiosArgs = exports.PersonasApiAxiosParamCreator(configuration).getContactPoints(id, options);
+        getContactPoints1: function (id, options) {
+            var localVarAxiosArgs = exports.PersonasApiAxiosParamCreator(configuration).getContactPoints1(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1363,15 +1317,15 @@ exports.PersonasApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2: function (userSearch, options) {
-            var localVarAxiosArgs = exports.PersonasApiAxiosParamCreator(configuration).search2(userSearch, options);
+        search3: function (userSearch, options) {
+            var localVarAxiosArgs = exports.PersonasApiAxiosParamCreator(configuration).search3(userSearch, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
             };
-        },
+        }
     };
 };
 /**
@@ -1386,8 +1340,8 @@ exports.PersonasApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById2: function (id, options) {
-            return exports.PersonasApiFp(configuration).getById2(id, options)(axios, basePath);
+        getById3: function (id, options) {
+            return exports.PersonasApiFp(configuration).getById3(id, options)(axios, basePath);
         },
         /**
          * Returns the contact infos of the persona with the given ID
@@ -1395,8 +1349,8 @@ exports.PersonasApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContactPoints: function (id, options) {
-            return exports.PersonasApiFp(configuration).getContactPoints(id, options)(axios, basePath);
+        getContactPoints1: function (id, options) {
+            return exports.PersonasApiFp(configuration).getContactPoints1(id, options)(axios, basePath);
         },
         /**
          * Persona searching
@@ -1404,9 +1358,9 @@ exports.PersonasApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2: function (userSearch, options) {
-            return exports.PersonasApiFp(configuration).search2(userSearch, options)(axios, basePath);
-        },
+        search3: function (userSearch, options) {
+            return exports.PersonasApiFp(configuration).search3(userSearch, options)(axios, basePath);
+        }
     };
 };
 /**
@@ -1427,8 +1381,8 @@ var PersonasApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    PersonasApi.prototype.getById2 = function (id, options) {
-        return exports.PersonasApiFp(this.configuration).getById2(id, options)(this.axios, this.basePath);
+    PersonasApi.prototype.getById3 = function (id, options) {
+        return exports.PersonasApiFp(this.configuration).getById3(id, options)(this.axios, this.basePath);
     };
     /**
      * Returns the contact infos of the persona with the given ID
@@ -1437,8 +1391,8 @@ var PersonasApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    PersonasApi.prototype.getContactPoints = function (id, options) {
-        return exports.PersonasApiFp(this.configuration).getContactPoints(id, options)(this.axios, this.basePath);
+    PersonasApi.prototype.getContactPoints1 = function (id, options) {
+        return exports.PersonasApiFp(this.configuration).getContactPoints1(id, options)(this.axios, this.basePath);
     };
     /**
      * Persona searching
@@ -1447,8 +1401,8 @@ var PersonasApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof PersonasApi
      */
-    PersonasApi.prototype.search2 = function (userSearch, options) {
-        return exports.PersonasApiFp(this.configuration).search2(userSearch, options)(this.axios, this.basePath);
+    PersonasApi.prototype.search3 = function (userSearch, options) {
+        return exports.PersonasApiFp(this.configuration).search3(userSearch, options)(this.axios, this.basePath);
     };
     return PersonasApi;
 }(base_1.BaseAPI));
@@ -1465,11 +1419,11 @@ exports.TripsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById3: function (id, options) {
+        getById1: function (id, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'id' is not null or undefined
             if (id === null || id === undefined) {
-                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById3.');
+                throw new base_1.RequiredError('id', 'Required parameter id was null or undefined when calling getById1.');
             }
             var localVarPath = "/trip/{id}"
                 .replace("{" + "id" + "}", encodeURIComponent(String(id)));
@@ -1488,20 +1442,20 @@ exports.TripsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
          * Trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3: function (search, options) {
+        search1: function (searchDto, options) {
             if (options === void 0) { options = {}; }
-            // verify required parameter 'search' is not null or undefined
-            if (search === null || search === undefined) {
-                throw new base_1.RequiredError('search', 'Required parameter search was null or undefined when calling search3.');
+            // verify required parameter 'searchDto' is not null or undefined
+            if (searchDto === null || searchDto === undefined) {
+                throw new base_1.RequiredError('searchDto', 'Required parameter searchDto was null or undefined when calling search1.');
             }
             var localVarPath = "/trip/search";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -1518,24 +1472,24 @@ exports.TripsApiAxiosParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             var headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            var needsSerialization = (typeof search !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(search !== undefined ? search : {}) : (search || "");
+            var needsSerialization = (typeof searchDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(searchDto !== undefined ? searchDto : {}) : (searchDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
         },
         /**
          * Minimal trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchMinimal: function (search, options) {
+        searchMinimal1: function (searchDto, options) {
             if (options === void 0) { options = {}; }
-            // verify required parameter 'search' is not null or undefined
-            if (search === null || search === undefined) {
-                throw new base_1.RequiredError('search', 'Required parameter search was null or undefined when calling searchMinimal.');
+            // verify required parameter 'searchDto' is not null or undefined
+            if (searchDto === null || searchDto === undefined) {
+                throw new base_1.RequiredError('searchDto', 'Required parameter searchDto was null or undefined when calling searchMinimal1.');
             }
             var localVarPath = "/trip/search/minimal";
             var localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -1552,13 +1506,13 @@ exports.TripsApiAxiosParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             var headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            var needsSerialization = (typeof search !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(search !== undefined ? search : {}) : (search || "");
+            var needsSerialization = (typeof searchDto !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(searchDto !== undefined ? searchDto : {}) : (searchDto || "");
             return {
                 url: globalImportUrl.format(localVarUrlObj),
-                options: localVarRequestOptions,
+                options: localVarRequestOptions
             };
-        },
+        }
     };
 };
 /**
@@ -1573,10 +1527,10 @@ exports.TripsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById3: function (id, options) {
-            var localVarAxiosArgs = exports.TripsApiAxiosParamCreator(configuration).getById3(id, options);
+        getById1: function (id, options) {
+            var localVarAxiosArgs = exports.TripsApiAxiosParamCreator(configuration).getById1(id, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1584,14 +1538,14 @@ exports.TripsApiFp = function (configuration) {
         },
         /**
          * Trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3: function (search, options) {
-            var localVarAxiosArgs = exports.TripsApiAxiosParamCreator(configuration).search3(search, options);
+        search1: function (searchDto, options) {
+            var localVarAxiosArgs = exports.TripsApiAxiosParamCreator(configuration).search1(searchDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
@@ -1599,19 +1553,19 @@ exports.TripsApiFp = function (configuration) {
         },
         /**
          * Minimal trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchMinimal: function (search, options) {
-            var localVarAxiosArgs = exports.TripsApiAxiosParamCreator(configuration).searchMinimal(search, options);
+        searchMinimal1: function (searchDto, options) {
+            var localVarAxiosArgs = exports.TripsApiAxiosParamCreator(configuration).searchMinimal1(searchDto, options);
             return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
+                if (axios === void 0) { axios = axios_1["default"]; }
                 if (basePath === void 0) { basePath = base_1.BASE_PATH; }
                 var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
                 return axios.request(axiosRequestArgs);
             };
-        },
+        }
     };
 };
 /**
@@ -1626,27 +1580,27 @@ exports.TripsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById3: function (id, options) {
-            return exports.TripsApiFp(configuration).getById3(id, options)(axios, basePath);
+        getById1: function (id, options) {
+            return exports.TripsApiFp(configuration).getById1(id, options)(axios, basePath);
         },
         /**
          * Trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3: function (search, options) {
-            return exports.TripsApiFp(configuration).search3(search, options)(axios, basePath);
+        search1: function (searchDto, options) {
+            return exports.TripsApiFp(configuration).search1(searchDto, options)(axios, basePath);
         },
         /**
          * Minimal trip searching
-         * @param {Search} search Search criteria
+         * @param {SearchDto} searchDto Search criteria
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchMinimal: function (search, options) {
-            return exports.TripsApiFp(configuration).searchMinimal(search, options)(axios, basePath);
-        },
+        searchMinimal1: function (searchDto, options) {
+            return exports.TripsApiFp(configuration).searchMinimal1(searchDto, options)(axios, basePath);
+        }
     };
 };
 /**
@@ -1667,29 +1621,30 @@ var TripsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    TripsApi.prototype.getById3 = function (id, options) {
-        return exports.TripsApiFp(this.configuration).getById3(id, options)(this.axios, this.basePath);
+    TripsApi.prototype.getById1 = function (id, options) {
+        return exports.TripsApiFp(this.configuration).getById1(id, options)(this.axios, this.basePath);
     };
     /**
      * Trip searching
-     * @param {Search} search Search criteria
+     * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    TripsApi.prototype.search3 = function (search, options) {
-        return exports.TripsApiFp(this.configuration).search3(search, options)(this.axios, this.basePath);
+    TripsApi.prototype.search1 = function (searchDto, options) {
+        return exports.TripsApiFp(this.configuration).search1(searchDto, options)(this.axios, this.basePath);
     };
     /**
      * Minimal trip searching
-     * @param {Search} search Search criteria
+     * @param {SearchDto} searchDto Search criteria
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TripsApi
      */
-    TripsApi.prototype.searchMinimal = function (search, options) {
-        return exports.TripsApiFp(this.configuration).searchMinimal(search, options)(this.axios, this.basePath);
+    TripsApi.prototype.searchMinimal1 = function (searchDto, options) {
+        return exports.TripsApiFp(this.configuration).searchMinimal1(searchDto, options)(this.axios, this.basePath);
     };
     return TripsApi;
 }(base_1.BaseAPI));
 exports.TripsApi = TripsApi;
+//# sourceMappingURL=api.js.map

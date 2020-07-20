@@ -11,7 +11,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var Configuration = /** @class */ (function () {
     function Configuration(param) {
         if (param === void 0) { param = {}; }
@@ -25,3 +25,4 @@ var Configuration = /** @class */ (function () {
     return Configuration;
 }());
 exports.Configuration = Configuration;
+//# sourceMappingURL=configuration.js.map
