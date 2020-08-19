@@ -18,7 +18,7 @@ import { Configuration } from "./configuration";
 import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
 
 // export const BASE_PATH = "https://r2g.api.dev.services.rd2g.de".replace(/\/+$/, "");
-export const BASE_PATH = "https://frededdison-metasearch-r2g-api-dev.apps.prod.rd2g.de".replace(/\/+$/, "");
+export const BASE_PATH = "https://frededdison-metasearch-r2g-api-dev.apps.prod.rd2g.de/api/".replace(/\/+$/, "");
 
 /**
  *
