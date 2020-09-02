@@ -28,7 +28,8 @@ exports.__esModule = true;
 // Some imports not used depending on template conditions
 // @ts-ignore
 var axios_1 = require("axios");
-exports.BASE_PATH = "https://r2g.api.dev.services.rd2g.de".replace(/\/+$/, "");
+// exports.BASE_PATH = "https://r2g.api.dev.services.rd2g.de".replace(/\/+$/, "");
+exports.BASE_PATH = "https://frededdison-metasearch-r2g-api-dev.apps.prod.rd2g.de/api/".replace(/\/+$/, "");
 /**
  *
  * @export
